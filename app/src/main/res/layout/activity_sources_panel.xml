@@ -8,9 +8,62 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:background="@color/primary_dark_material_dark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"></LinearLayout>
+        android:layout_gravity="center_vertical"
+        android:layout_weight="6">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="ChelseaLive"
+            android:id="@+id/buttonChelseaLive"
+            android:background="@drawable/button_deprecated" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="Sky Sports"
+            android:background="@drawable/button_deprecated"
+            android:id="@+id/buttonSkySports" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="Goal.com"
+            android:background="@drawable/button_deprecated"
+            android:id="@+id/buttonGoalCom" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="TalkSport Chelsea"
+            android:background="@drawable/button_deprecated"
+            android:id="@+id/buttonTalkSportChelsea" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="TalkSport Premier League"
+            android:background="@drawable/button_deprecated"
+            android:id="@+id/buttonTalkSportPremierLeague" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="Daily Mail"
+            android:background="@drawable/button_deprecated"
+            android:id="@+id/buttonDailyMail" />
+    </LinearLayout>
 </RelativeLayout>
