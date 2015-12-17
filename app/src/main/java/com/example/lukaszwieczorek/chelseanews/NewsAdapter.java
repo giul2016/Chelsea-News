@@ -2,6 +2,7 @@ package com.example.lukaszwieczorek.chelseanews;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
             holder.title = (TextView) row.findViewById(R.id.textViewNewsTitle);
             holder.description = (TextView) row.findViewById(R.id.textViewNewsDescription);
+            holder.data = (TextView) row.findViewById(R.id.textViewNewsDate);
 
             row.setTag(holder);
         }
@@ -50,7 +52,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
         News news = data[position];
 
         holder.title.setText(news.getTitle());
-        holder.description.setText(news.getDescription());
+//        holder.description.setText(news.getDescription());
+        holder.description.setText(Html.fromHtml(news.getDescription()));
+        holder.data.setText(news.getDate());
 
         return row;
     }
@@ -58,5 +62,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
     static class NewsHolder {
         TextView title;
         TextView description;
+        TextView data;
     }
 }

@@ -8,13 +8,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class XmlReader {
     private XmlPullParserFactory xmlFactoryObject;
-
+    private String filename;
     private News news[];
 
     public void readXMLFile(final File destinationDirectory, final String filename) {
+        this.filename = filename;
+
         try {
             FileInputStream fileInputStream = new FileInputStream(new File(destinationDirectory, filename));
 
@@ -35,7 +38,6 @@ public class XmlReader {
     }
 
     public void parseXMLAndStoreIt(XmlPullParser myParser) {
-
         ArrayList<News> newsAL = new ArrayList<>();
         int event;
         String text=null;
@@ -56,11 +58,14 @@ public class XmlReader {
 
                     case XmlPullParser.END_TAG:
                         if (name.equals("title")) {
-                            newsAL.add(new News(text));
+                            newsAL.add(new News(text.trim()));
                         }
                         else if (name.equals("link")) {}
                         else if (name.equals("description")) {
-                            newsAL.get(newsAL.size()-1).setDescription(text);
+                            newsAL.get(newsAL.size()-1).setDescription(text.trim());
+                        }
+                        else if (name.equals("pubDate")) {
+                            newsAL.get(newsAL.size()-1).setDate(text.trim());
                         }
                         else {}
                         break;
@@ -75,6 +80,13 @@ public class XmlReader {
     }
 
     public News[] getNews() {
-        return news;
+        if (filename.equals("chelsealive.xml") || filename.equals("talkSportChelsea.xml") || filename.equals("talkSportPremierLeague.xml"))
+            return Arrays.copyOfRange(news, 1, news.length-1);
+        else if (filename.equals("goalCom.xml") || filename.equals("dailymail.xml"))
+            return Arrays.copyOfRange(news, 2, news.length-1);
+        else if (filename.equals("skysports.xml"))
+            return Arrays.copyOfRange(news, 3, news.length-1);
+        else
+            return news;
     }
 }

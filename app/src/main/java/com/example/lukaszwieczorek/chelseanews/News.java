@@ -3,6 +3,7 @@ package com.example.lukaszwieczorek.chelseanews;
 public class News {
     private String title;
     private String description;
+    private String date;
 
     public News(String title) {
         this.title = title;
@@ -16,11 +17,19 @@ public class News {
         return description;
     }
 
+    public String getDate() {
+        return date;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

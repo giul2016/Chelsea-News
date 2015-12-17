@@ -16,4 +16,11 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textViewNewsDescription" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="New Text"
+        android:id="@+id/textViewNewsDate" />
 </LinearLayout>

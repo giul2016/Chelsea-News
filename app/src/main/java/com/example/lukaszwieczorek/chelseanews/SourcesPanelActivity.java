@@ -117,6 +117,13 @@ public class SourcesPanelActivity extends AppCompatActivity {
     }
 
     private void collectRssChannels() {
+        chelsealiveB.setEnabled(false);
+        skysportsB.setEnabled(false);
+        goalcomB.setEnabled(false);
+        talksportchelseaB.setEnabled(false);
+        talksportpremierleagueB.setEnabled(false);
+        dailymailB.setEnabled(false);
+
         getNewsAsyncTask chelseaLiveTask = new getNewsAsyncTask();
         chelseaLiveTask.execute(chelseaLive);
         getNewsAsyncTask skySportsTask = new getNewsAsyncTask();
@@ -141,7 +148,10 @@ public class SourcesPanelActivity extends AppCompatActivity {
             return null;
         }
 
-        protected void onPostExecute(Double result) { changeButtonLayoutToReady(button); }
+        protected void onPostExecute(Double result) {
+            button.setEnabled(true);
+            changeButtonLayoutToReady(button);
+        }
 
         protected void onProgressUpdate(Integer... progress) { }
     }
