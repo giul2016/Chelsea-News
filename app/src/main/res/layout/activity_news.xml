@@ -4,12 +4,15 @@ xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_paren
 android:layout_height="match_parent" android:paddingLeft="@dimen/news_activity_horizontal_margin"
 android:paddingRight="@dimen/news_activity_horizontal_margin"
 android:paddingTop="@dimen/news_activity_vertical_margin"
-android:paddingBottom="@dimen/news_activity_vertical_margin" tools:context=".NewsActivity">
+android:paddingBottom="@dimen/news_activity_vertical_margin"
+    android:background="#323232" tools:context=".NewsActivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listViewNews"
+        android:divider="#ffffff"
+        android:dividerHeight="1dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

@@ -4,7 +4,9 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".SourcesPanelActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#323232"
+    tools:context=".SourcesPanelActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -13,55 +15,87 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="6">
 
-        <Button
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="ChelseaLive"
+            android:src="@drawable/chelsealive"
             android:id="@+id/buttonChelseaLive"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:scaleType="fitCenter"
             android:background="@drawable/button_deprecated" />
 
-        <Button
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:src="@drawable/skysports"
+            android:scaleType="fitCenter"
             android:text="Sky Sports"
             android:background="@drawable/button_deprecated"
             android:id="@+id/buttonSkySports" />
 
-        <Button
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/goalcom"
+            android:scaleType="fitCenter"
             android:text="Goal.com"
             android:background="@drawable/button_deprecated"
             android:id="@+id/buttonGoalCom" />
 
-        <Button
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:src="@drawable/talksport"
+            android:scaleType="fitCenter"
+            android:text="TalkSport Premier League"
+            android:background="@drawable/button_deprecated"
+            android:id="@+id/buttonTalkSportPremierLeague" />
+
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:text="TalkSport Chelsea"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:src="@drawable/talksportchelsea"
+            android:scaleType="fitCenter"
             android:background="@drawable/button_deprecated"
             android:id="@+id/buttonTalkSportChelsea" />
 
-        <Button
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:text="TalkSport Premier League"
-            android:background="@drawable/button_deprecated"
-            android:id="@+id/buttonTalkSportPremierLeague" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/dailymail"
+            android:scaleType="fitCenter"
             android:text="Daily Mail"
             android:background="@drawable/button_deprecated"
             android:id="@+id/buttonDailyMail" />
