@@ -15,7 +15,7 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="6">
 
-        <ImageButton
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -24,11 +24,9 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:scaleType="fitCenter"
-            android:background="@drawable/button_deprecated" />
+            android:paddingRight="50dp" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -38,12 +36,9 @@
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:src="@drawable/skysports"
-            android:scaleType="fitCenter"
-            android:text="Sky Sports"
-            android:background="@drawable/button_deprecated"
             android:id="@+id/buttonSkySports" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -51,12 +46,9 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:src="@drawable/goalcom"
-            android:scaleType="fitCenter"
-            android:text="Goal.com"
-            android:background="@drawable/button_deprecated"
             android:id="@+id/buttonGoalCom" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -66,27 +58,21 @@
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:src="@drawable/talksport"
-            android:scaleType="fitCenter"
-            android:text="TalkSport Premier League"
-            android:background="@drawable/button_deprecated"
             android:id="@+id/buttonTalkSportPremierLeague" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="10dp"
-            android:text="TalkSport Chelsea"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:src="@drawable/talksportchelsea"
-            android:scaleType="fitCenter"
-            android:background="@drawable/button_deprecated"
             android:id="@+id/buttonTalkSportChelsea" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -95,9 +81,6 @@
             android:paddingRight="50dp"
             android:paddingTop="5dp"
             android:src="@drawable/dailymail"
-            android:scaleType="fitCenter"
-            android:text="Daily Mail"
-            android:background="@drawable/button_deprecated"
             android:id="@+id/buttonDailyMail" />
     </LinearLayout>
 </RelativeLayout>

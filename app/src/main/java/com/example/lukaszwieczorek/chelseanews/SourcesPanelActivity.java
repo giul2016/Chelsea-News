@@ -1,23 +1,21 @@
 package com.example.lukaszwieczorek.chelseanews;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
 
 public class SourcesPanelActivity extends AppCompatActivity {
-    ImageButton chelsealiveB, skysportsB, goalcomB, talksportchelseaB, talksportpremierleagueB, dailymailB;
+    ImageView chelsealiveB, skysportsB, goalcomB, talksportchelseaB, talksportpremierleagueB, dailymailB;
 
     PowerManager.WakeLock wl;
 
@@ -61,38 +59,38 @@ public class SourcesPanelActivity extends AppCompatActivity {
         wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "Wake Lock in the main activity");
         wl.acquire();
 
-        chelsealiveB = (ImageButton) findViewById(R.id.buttonChelseaLive);
+        chelsealiveB = (ImageView) findViewById(R.id.buttonChelseaLive);
         chelsealiveB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openNewsActivity(chelseaLive);
             }
         });
 
-        skysportsB = (ImageButton) findViewById(R.id.buttonSkySports);
+        skysportsB = (ImageView) findViewById(R.id.buttonSkySports);
         skysportsB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openNewsActivity(skySports);
             }
         });
-        goalcomB = (ImageButton) findViewById(R.id.buttonGoalCom);
+        goalcomB = (ImageView) findViewById(R.id.buttonGoalCom);
         goalcomB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openNewsActivity(goalCom);
             }
         });
-        talksportchelseaB = (ImageButton) findViewById(R.id.buttonTalkSportChelsea);
+        talksportchelseaB = (ImageView) findViewById(R.id.buttonTalkSportChelsea);
         talksportchelseaB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openNewsActivity(talkSportChelsea);
             }
         });
-        talksportpremierleagueB = (ImageButton) findViewById(R.id.buttonTalkSportPremierLeague);
+        talksportpremierleagueB = (ImageView) findViewById(R.id.buttonTalkSportPremierLeague);
         talksportpremierleagueB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openNewsActivity(talkSportPremierLeague);
             }
         });
-        dailymailB = (ImageButton) findViewById(R.id.buttonDailyMail);
+        dailymailB = (ImageView) findViewById(R.id.buttonDailyMail);
         dailymailB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openNewsActivity(dailyMail);
@@ -108,6 +106,7 @@ public class SourcesPanelActivity extends AppCompatActivity {
         if (Services.isEstablishedInternetConnectivity(this)) {
             collectRssChannels();
         } else {
+            changeButtonsLayoutToOffline();
             Toast.makeText(this, "Brak połączenia z internetem", Toast.LENGTH_SHORT).show();
         }
     }
@@ -141,12 +140,12 @@ public class SourcesPanelActivity extends AppCompatActivity {
     }
 
     private class getNewsAsyncTask extends AsyncTask<Portal, Integer, Double> {
-        ImageButton button;
+        ImageView button;
 
         @Override
         protected Double doInBackground(Portal... params) {
             getRssGetData(params[0]);
-            button = (ImageButton) findViewById(getResources().getIdentifier(params[0].getButtonId(), "id", "com.example.lukaszwieczorek.chelseanews"));
+            button = (ImageView) findViewById(getResources().getIdentifier(params[0].getButtonId(), "id", "com.example.lukaszwieczorek.chelseanews"));
             return null;
         }
 
@@ -168,27 +167,32 @@ public class SourcesPanelActivity extends AppCompatActivity {
         startActivity(startNewsActivity);
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void changeButtonLayoutToReady(ImageButton readyButton) {
-        final int sdk = android.os.Build.VERSION.SDK_INT;
-        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            readyButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_ready));
-        } else {
-            readyButton.setBackground(getResources().getDrawable(R.drawable.button_ready));
+    public void changeButtonLayoutToReady(ImageView readyButton) {
+        readyButton.setAlpha(220);
+    }
+
+    public void changeButtonsLayoutToDeprecated() {
+        ImageView[] allButtons = {chelsealiveB, skysportsB, goalcomB, talksportchelseaB, talksportpremierleagueB, dailymailB};
+
+        for(ImageView button : allButtons) {
+            button.setAlpha(20);
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void changeButtonsLayoutToDeprecated() {
-        ImageButton[] allButtons = {chelsealiveB, skysportsB, goalcomB, talksportchelseaB, talksportpremierleagueB, dailymailB};
+    public void changeButtonsLayoutToOffline() {
+        ImageView[] allButtons = {chelsealiveB, skysportsB, goalcomB, talksportchelseaB, talksportpremierleagueB, dailymailB};
 
-        for(ImageButton button : allButtons) {
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                button.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_deprecated));
-            } else {
-                button.setBackground(getResources().getDrawable(R.drawable.button_deprecated));
-            }
+        for(ImageView button : allButtons) {
+            setLocked(button);
+            button.setAlpha(200);
         }
+    }
+
+    public static void  setLocked(ImageView v) {
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0);  //0 means grayscale
+        ColorMatrixColorFilter cf = new ColorMatrixColorFilter(matrix);
+        v.setColorFilter(cf);
+        v.setAlpha(128);   // 128 = 0.5
     }
 }
